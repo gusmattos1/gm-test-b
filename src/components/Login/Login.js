@@ -33,7 +33,7 @@ export default function Login({ setUserLogged }) {
 
     refreshTokenSetup(res);
 
-    setUserLogged(true);
+    setUserLogged(res.profileObj);
   };
 
   const onFailure = (res) => {
