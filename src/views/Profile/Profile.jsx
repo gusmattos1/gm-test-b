@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
+import Page from "src/components/Page";
 import { getAddress } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,33 +17,33 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "center"
   },
   avatar: {
     margin: theme.spacing(1),
-    overflow: "visible",
+    overflow: "visible"
     // backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 2)
   },
   root: {
     display: "flex",
     justifyContent: "center",
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   profileIcon: {
-    objectFit: "contain",
+    objectFit: "contain"
   },
   box: {
     display: "flex",
     justifyContent: "center",
-    paddingBottom: theme.spacing(4),
-  },
+    paddingBottom: theme.spacing(4)
+  }
 }));
 
 export default function SignUp() {
@@ -67,16 +68,17 @@ export default function SignUp() {
   const generateProfile = () => {
     if (profile)
       return (
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate data-testid="profile-form">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
+                data-testid="first-name"
                 label="First Name"
                 fullWidth
                 variant="outlined"
                 value={profile.name.first || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -87,7 +89,7 @@ export default function SignUp() {
                 variant="outlined"
                 value={profile.name.last || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -98,7 +100,7 @@ export default function SignUp() {
                 variant="outlined"
                 value={profile.gender || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -109,7 +111,7 @@ export default function SignUp() {
                 variant="outlined"
                 value={profile.nat || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -120,7 +122,7 @@ export default function SignUp() {
                 label="Email"
                 value={profile.email || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -131,18 +133,19 @@ export default function SignUp() {
                 label="Phone"
                 value={profile.cell || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                data-testid="address"
                 variant="outlined"
                 fullWidth
                 label="Address"
                 value={getAddress(profile) || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
                 multiline
                 rowsMax={4}
@@ -155,7 +158,7 @@ export default function SignUp() {
                 variant="outlined"
                 value={profile.dob.age || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -166,7 +169,7 @@ export default function SignUp() {
                 variant="outlined"
                 value={profile.dob.date.split("T")[0] || ""}
                 InputProps={{
-                  readOnly: true,
+                  readOnly: true
                 }}
               />
             </Grid>
@@ -181,7 +184,7 @@ export default function SignUp() {
 
   if (!profile && !error) {
     return (
-      <div className={classes.root}>
+      <div className={classes.root} data-testid="profile-spinner">
         <CircularProgress />
       </div>
     );
@@ -209,30 +212,32 @@ export default function SignUp() {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <img
-            src={profile.picture.medium}
-            alt="profile icon"
-            className={classes.profileIcon}
-          ></img>
-        </Avatar>
-        {generateProfile()}
-      </div>
-      <Box mt={5} className={classes.box}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            setError(false);
-            fetchProfile();
-          }}
-        >
-          Refetch
-        </Button>
-      </Box>
-    </Container>
+    <Page className={classes.root} title="Profile">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <img
+              src={profile.picture.medium}
+              alt="profile icon"
+              className={classes.profileIcon}
+            ></img>
+          </Avatar>
+          {generateProfile()}
+        </div>
+        <Box mt={5} className={classes.box}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              setError(false);
+              fetchProfile();
+            }}
+          >
+            Refetch
+          </Button>
+        </Box>
+      </Container>
+    </Page>
   );
 }

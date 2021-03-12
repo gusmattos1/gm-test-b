@@ -16,18 +16,18 @@ import Logout from "../Logout/Logout";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   userPicture: {
     width: "inherit",
-    height: "inherit",
-  },
+    height: "inherit"
+  }
 }));
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -35,27 +35,27 @@ const StyledMenuItem = withStyles((theme) => ({
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
+        color: theme.palette.common.white
+      }
+    }
+  }
 }))(MenuItem);
 
 const StyledMenu = withStyles({
   paper: {
-    border: "1px solid #d3d4d5",
-  },
+    border: "1px solid #d3d4d5"
+  }
 })((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
     anchorOrigin={{
       vertical: "bottom",
-      horizontal: "center",
+      horizontal: "center"
     }}
     transformOrigin={{
       vertical: "top",
-      horizontal: "center",
+      horizontal: "center"
     }}
     {...props}
   />
@@ -83,7 +83,7 @@ export default function MainAppBar({ user, setUserLogged }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" data-testid="appbar-test">
         <Toolbar>
           <IconButton
             edge="start"

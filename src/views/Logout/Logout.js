@@ -33,11 +33,13 @@ function Logout({ setUserLogged, user }) {
 
   return (
     <Button
+      data-testid="logout-button"
       onClick={signOut}
       color="inherit"
       startIcon={
         <Avatar>
           <img
+            data-testid="user-img"
             src={user.imageUrl}
             alt="user profile"
             className={classes.userPicture}
