@@ -1,7 +1,12 @@
-import React, { useEffect, useState } from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AppBar from "src/views/AppBar/AppBar";
+import Dashboard from "src/views/Dashboard";
+import Login from "src/views/Login/Login";
+import Profile from "src/views/Profile/Profile";
+import NotFound from "src/views/Error/NotFound";
 import "./App.css";
-import Login from "./components/Login/Login";
-import Logout from "./components/Logout/Logout";
 
 function App() {
   const [userLogged, setUserLogged] = useState();
@@ -11,10 +16,27 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Logout />
-      <br />
-    </div>
+    <Router>
+      <CssBaseline />
+
+      <div>
+        <AppBar user={userLogged} setUserLogged={setUserLogged} />
+
+        {/* A <Switch> looks through its children <Route>s and
+          renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
