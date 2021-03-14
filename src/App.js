@@ -5,6 +5,7 @@ import routes from "src/routes";
 import Login from "src/views/Login/Login";
 import "./App.css";
 import MainLayout from "./layouts/MainLayout";
+import GlobalStyles from "src/components/GlobalStyles";
 
 function App() {
   const [userLogged, setUserLogged] = useState();
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <CssBaseline />
+      <GlobalStyles />
       {routing}
     </>
   );
