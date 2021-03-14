@@ -38,7 +38,6 @@ export default function Login({ setUserLogged }) {
 
   const onFailure = (res) => {
     // console.log("Login failed: res:", res);
-    alert(`Failed to login.`);
     setUserLogged(false);
   };
 
