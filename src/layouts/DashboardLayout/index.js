@@ -47,6 +47,7 @@ const DashboardLayout = ({ user, setUserLogged }) => {
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}
         user={user}
+        setUserLogged={setUserLogged}
       />
       <div className={classes.wrapper}>
         <div className={classes.contentContainer}>

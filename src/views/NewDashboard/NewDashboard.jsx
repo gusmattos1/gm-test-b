@@ -109,9 +109,8 @@ const NewDashboard = () => {
           `${API_URL}/symbol?exchange=US&token=${API_TOKEN}`
         );
         const symbols = await response.json();
-        const sortedSymbols = symbols
-          .map((item) => item.displaySymbol)
-          .sort((a, b) => a > b);
+        const sortedSymbols = symbols.map((item) => item.displaySymbol).sort();
+
         setAllSymbols(sortedSymbols);
       } catch (error) {
         console.error("Error getting all symbols");

@@ -1,6 +1,3 @@
-import React, { useEffect } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -8,13 +5,16 @@ import {
   Drawer,
   Hidden,
   List,
-  Typography,
   makeStyles,
+  Typography,
 } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 import PersonIcon from "@material-ui/icons/Person";
-
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import Logout from "src/views/Logout/Logout";
 import NavItem from "./NavItem";
 
 const items = [
@@ -49,9 +49,13 @@ const useStyles = makeStyles(() => ({
     width: 64,
     height: 64,
   },
+  logout: {
+    position: "fixed",
+    bottom: 0,
+  },
 }));
 
-const NavBar = ({ onMobileClose, openMobile, user }) => {
+const NavBar = ({ onMobileClose, openMobile, user, setUserLogged }) => {
   const classes = useStyles();
   const location = useLocation();
 
@@ -91,7 +95,12 @@ const NavBar = ({ onMobileClose, openMobile, user }) => {
           ))}
         </List>
       </Box>
-      <Box flexGrow={1} />
+      <Box p={2} className={classes.logout}>
+        <Typography color="textSecondary" variant="body2" align="center">
+          Logout
+          <Logout setUserLogged={setUserLogged} />
+        </Typography>
+      </Box>
     </Box>
   );
 

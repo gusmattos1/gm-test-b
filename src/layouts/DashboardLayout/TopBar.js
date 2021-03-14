@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import clsx from "clsx";
-import PropTypes from "prop-types";
 import {
   AppBar,
   Badge,
   Box,
   Hidden,
   IconButton,
-  Toolbar,
   makeStyles,
+  Toolbar,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import Logo from "src/assets/icons/logo.png";
 import Logout from "src/views/Logout/Logout";
 
@@ -48,9 +48,7 @@ const TopBar = ({ className, onMobileNavOpen, setUserLogged, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
-            <Logout setUserLogged={setUserLogged} />
-          </IconButton>
+          <Logout setUserLogged={setUserLogged} />
         </Hidden>
         <Hidden lgUp>
           <IconButton color="inherit" onClick={onMobileNavOpen}>
