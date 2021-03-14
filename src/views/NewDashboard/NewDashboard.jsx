@@ -220,8 +220,6 @@ const NewDashboard = () => {
    * @param {Array} dataSet - data from socket message
    */
   const renderGraphs = (dataSet) => {
-    console.log("response", dataSet);
-
     const graphs = dataSet.map((data, index) => {
       if (data.error) {
         return (

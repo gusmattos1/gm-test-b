@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DashboardLayout = ({ user, setUserLogged }) => {
-  console.log(user);
   const classes = useStyles();
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
