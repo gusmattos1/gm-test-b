@@ -1,8 +1,6 @@
-import AppBar from "@material-ui/core/AppBar";
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import PropTypes from "prop-types";
@@ -19,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  title: {
-    flexGrow: 1,
-  },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
@@ -34,7 +29,7 @@ export default function Login({ setUserLogged }) {
   const clientId = process.env.REACT_APP_CLIENT_ID;
 
   const onSuccess = (res) => {
-    console.log("Login Success: currentUser:", res.profileObj);
+    // console.log("Login Success: currentUser:", res.profileObj);
 
     refreshTokenSetup(res);
 
@@ -56,38 +51,24 @@ export default function Login({ setUserLogged }) {
   });
 
   return (
-    <>
-      <AppBar position="static" data-testid="appbar-test">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            className={classes.title}
-            align="center"
-            fullWidth
-          >
-            GM Project
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Container component="main" maxWidth="xs">
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <button onClick={signIn} className="button">
-            <img src={GoogleLogo} alt="google login" className="icon"></img>
+    <Container component="main" maxWidth="xs">
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <button onClick={signIn} className="button">
+          <img src={GoogleLogo} alt="google login" className="icon"></img>
 
-            <span className="buttonText" data-testid="signInGoogle">
-              Sign in with Google
-            </span>
-          </button>
-        </div>
-        <Copyright />
-      </Container>
-    </>
+          <span className="buttonText" data-testid="signInGoogle">
+            Sign in with Google
+          </span>
+        </button>
+      </div>
+      <Copyright />
+    </Container>
   );
 }
 
