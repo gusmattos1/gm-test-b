@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonIcon from "@material-ui/icons/Person";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Logout from "../Logout/Logout";
@@ -106,6 +107,12 @@ export default function MainAppBar({ user, setUserLogged }) {
                 <DashboardIcon fontSize="small" />
               </ListItemIcon>
               <ListItemText primary="Dashboard" />
+            </StyledMenuItem>
+            <StyledMenuItem onClick={() => navigate("/newdashboard")}>
+              <ListItemIcon>
+                <StarBorderIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="New Dashboard" />
             </StyledMenuItem>
             <StyledMenuItem onClick={() => navigate("/profile")}>
               <ListItemIcon>
